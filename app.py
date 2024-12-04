@@ -162,6 +162,7 @@ def add_orders():
 @app.route('/customers',methods=["GET"])
 def get_customers():
     customers=Customer.query.all()
+    
     return customers_schema.jsonify(customers)
 
 @app.route('/orders',methods=["GET"])
