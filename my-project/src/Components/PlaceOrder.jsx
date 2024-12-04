@@ -3,7 +3,7 @@ import { Component } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import NewDate from './NewDate';
-
+import { formateDate } from '../utils';
 
 class PlaceOrder extends Component {
     constructor(props) {
@@ -36,12 +36,8 @@ class PlaceOrder extends Component {
         const { products } = this.state;
 
         function handleClick() {
-                alert('Thank You, Your Order Has been Placed',{NewDate});
-            <br />
-
-
+                alert('Thank You, Your Order Has been Placed' + '\n' + 'Order Date:' + formateDate())
             }
-
 
 
         return (

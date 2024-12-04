@@ -29,9 +29,9 @@ class CustomerList extends Component {
         this.props.onCustomerSelect(id);
     }
 
-    handleRemove = () => {
+    handleRemove = (id) => {
        
-        axios.delete('http://127.0.0.1:5000/customers/${id}')
+        axios.delete(`http://127.0.0.1:5000/customers/${id}`)
             .then(response => {
                 console.log('customer deleted successfully Submitted:', response.data);
             })
@@ -54,6 +54,7 @@ class CustomerList extends Component {
                     {customers.map(customer => (
                         <li key={customer.id}>
                             <Link to={'/CustomerForm/${Customer.id}'}>{customer.name}</Link>
+
                             <button type="button" onClick={() => this.handleRemove(customer.id)}>
                                 Delete
                             </button>

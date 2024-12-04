@@ -27,16 +27,22 @@ class ProductList extends Component {
         this.setState({ selectedProductsId: id })
         this.props.onProductsSelect(id);
     }
+    handleRemove = (id) => {
+       
+        axios.delete(`http://127.0.0.1:5000/products/${id}`)
+            .then(response => {
+                console.log('products deleted successfully Submitted:', response.data);
+            })
+            .catch(error => {
+                console.error('There was an error submitting  Form:', error);
+            });
+    };
 
 
     render() {
         const { products } = this.state;
 
-        function handleRemove(id) {
-            const newList = list.filter((item) => item.id !== id);
-
-            setList(newList);
-        }
+        
 
         return (
             <div className="products-list">
@@ -46,7 +52,7 @@ class ProductList extends Component {
                         <li key={products.id}>
                             <Link to={'/customer.Order}'}></Link>
                             <Link to={'/ProductForm/${Products.id}'}>{products.name} | price:${products.price}  </Link>
-                            <button type="button" onClick={() => handleRemove(products.id)}>
+                            <button type="button" onClick={() => this.handleRemove(products.id)}>
                                 Delete
                             </button>
 

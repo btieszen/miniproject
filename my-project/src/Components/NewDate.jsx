@@ -1,14 +1,12 @@
 import React from 'react';
-
+import { formateDate } from '../utils';
 
 
  function NewDate() {
-  const current = new Date();
-  
-const date=`${current.getMonth()+1}/${current.getDate()}/${current.getFullYear()}`;
+
   return (
     <div className="App">
-      <p>Date Ordered is {date}</p>
+      <p>Date Ordered is {formateDate}</p>
     </div>
   );
 }
